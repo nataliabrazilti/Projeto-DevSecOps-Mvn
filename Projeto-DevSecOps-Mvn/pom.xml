@@ -1,52 +1,25 @@
-<xml version="1.0" encoding="UTF-8">
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.nataliabrazil</groupId>
-    <artifactId>projeto-devsecops-maven</artifactId>
-    <version>1.0.0</version>
+    <groupId>com.projeto</groupId>
+    <artifactId>Projeto-DevSecOps-Mvn</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Projeto DevSecOps Maven</name>
-    <description>Projeto Maven com CI usando GitHub Actions</description>
-
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <name>Projeto-DevSecOps-Mvn</name>
+    <url>http://maven.apache.org</url>
 
     <dependencies>
-
-        <!-- JUnit 5 para testes -->
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>5.10.0</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-
-    <build>
-        <plugins>
-
-            <!-- Plugin do Surefire (necessário para rodar testes JUnit 5) -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
-                <configuration>
-                    <useModulePath>false</useModulePath>
-                </configuration>
-            </plugin>
-
-        </plugins>
-    </build>
 
 </project>
