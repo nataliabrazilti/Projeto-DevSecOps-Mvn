@@ -7,9 +7,10 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
 
+  build:
+    name: Build
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -21,16 +22,50 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Build with Maven
+      - name: Build project
         working-directory: Projeto-DevSecOps-Mvn
         run: mvn -B package
+
+  test:
+    name: Test
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
 
       - name: Run tests
         working-directory: Projeto-DevSecOps-Mvn
         run: mvn test
 
-      - name: Upload JAR artifact
+  deploy:
+    name: Deploy
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Build for deploy
+        working-directory: Projeto-DevSecOps-Mvn
+        run: mvn -B package
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: projeto-devsecops-jar
+          name: app-build
           path: Projeto-DevSecOps-Mvn/target/*.jar
