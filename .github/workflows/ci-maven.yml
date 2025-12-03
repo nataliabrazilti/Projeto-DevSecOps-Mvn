@@ -21,10 +21,16 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Build project with Maven
+      - name: Build with Maven
         working-directory: Projeto-DevSecOps-Mvn
         run: mvn -B package
 
       - name: Run tests
         working-directory: Projeto-DevSecOps-Mvn
         run: mvn test
+
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: projeto-devsecops-jar
+          path: Projeto-DevSecOps-Mvn/target/*.jar
